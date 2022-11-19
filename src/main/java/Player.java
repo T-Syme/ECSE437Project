@@ -1,3 +1,5 @@
+package main.java;
+
 public class Player {
     private String playerName;
     private int numOfWins;
