@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RandomGeneratorTest {
 
     private static final int minVal = 1;
-    private static final int maxVal = 99;
+    private static final int maxVal = 75;
     private RandomGenerator randomGenerator;
 
     @BeforeEach
@@ -28,7 +28,7 @@ public class RandomGeneratorTest {
                 assertTrue(val <= maxVal);
             }
         } catch (Exception e) {
-            fail();
+            fail("getNext() unexpectedly did not get another number");
         }
     }
 
@@ -42,7 +42,7 @@ public class RandomGeneratorTest {
             for (int i = minVal; i <= maxVal + 1; i++) {
                 randomGenerator.getNext();
             }
-            fail();
+            fail("getNext() did not raise an exception when it should have");
         } catch (Exception e) {
             assertEquals("No more values", e.getMessage());
         }

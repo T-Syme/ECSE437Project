@@ -8,7 +8,7 @@ import static java.util.Collections.shuffle;
 public class RandomGenerator {
 
     private static final int minVal = 1;
-    private static final int maxVal = 99;
+    private static final int maxVal = 75;
     private static final Random random = new Random();
     List<Integer> numbers;
     ListIterator<Integer> iterator;
