@@ -1,3 +1,9 @@
 
-.idea/*
-out/*
+# IntelliJ
+.idea/
+*.iml
+*.iws
+
+# Maven
+log/
+target/
