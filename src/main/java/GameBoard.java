@@ -1,5 +1,7 @@
 public class GameBoard {
-    private static final int boardSize = 5;
+    private GameBoardSquare board[][];
+
+    private static final int BOARD_SIZE = 5;
 
     /**
      * These string values, GREEN and RESET, were retrieved from the following source:
@@ -9,21 +11,19 @@ public class GameBoard {
     private static final String GREEN = "\u001B[32m";
     private static final String RESET = "\u001B[0m";
 
-    private GameBoardSquare board[][];
-
     /**
      * Generates a 5x5 bingo game board.
      * Each square in the board corresponds to a number from 1 to 75, except the middle square which is a free slot.
      */
     public GameBoard() {
-        board = new GameBoardSquare[boardSize][boardSize];
+        board = new GameBoardSquare[BOARD_SIZE][BOARD_SIZE];
         RandomGenerator iterator = new RandomGenerator();
 
-        for (int row = 0; row < boardSize; row++) {
-            for (int col = 0; col < boardSize; col++) {
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            for (int col = 0; col < BOARD_SIZE; col++) {
                 board[row][col] = new GameBoardSquare();
 
-                if (row == 3 && col == 3) {
+                if (row == BOARD_SIZE / 2 && col == BOARD_SIZE / 2) {
                     board[row][col].setCovered(true);
                 }
 
@@ -50,11 +50,11 @@ public class GameBoard {
         printRowLines();
         System.out.println("|  B  |  I  |  N  |  G  |  O  |");
         printRowLines();
-        for (int row = 0; row < boardSize; row++) {
-            for (int col = 0; col < boardSize; col++) {
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            for (int col = 0; col < BOARD_SIZE; col++) {
 
                 //Prints X for free square
-                if (row == boardSize / 2 && col == boardSize / 2) {
+                if (row == BOARD_SIZE / 2 && col == BOARD_SIZE / 2) {
                     System.out.print("|  " + GREEN + "X" + RESET + "  ");
                 }
                 else {
@@ -76,7 +76,7 @@ public class GameBoard {
      * Helper method which prints dashed lines to be placed between the rows of the Bingo game board.
      */
     private void printRowLines() {
-        for (int i = 0; i < boardSize; i++) {
+        for (int i = 0; i < BOARD_SIZE; i++) {
             System.out.print("------");
         }
         System.out.println("-");

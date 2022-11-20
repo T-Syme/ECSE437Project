@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameBoardTest {
     private GameBoardSquare board[][];
-    private static final int boardSize = 5;
+    private static final int BOARD_SIZE = 5;
 
     @BeforeEach
     void setup() {
@@ -15,9 +15,9 @@ public class GameBoardTest {
 
     @Test
     void testGameBoard() {
-        for (int row = 0; row < boardSize; row++) {
-            for (int col = 0; col < boardSize; col++) {
-                if (row == 3 && col == 3) {
+        for (int row = 0; row < BOARD_SIZE; row++) {
+            for (int col = 0; col < BOARD_SIZE; col++) {
+                if (row == BOARD_SIZE / 2 && col == BOARD_SIZE / 2) {
                     assertTrue(board[row][col].isCovered());
                 }
 
