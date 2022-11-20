@@ -1,5 +1,14 @@
 public class GameBoard {
     private static final int boardSize = 5;
+
+    /**
+     * These string values, GREEN and RESET, were retrieved from the following source:
+     * https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
+     * Data accessed: November 20th, 2022
+     */
+    private static final String GREEN = "\u001B[32m";
+    private static final String RESET = "\u001B[0m";
+
     private GameBoardSquare board[][];
 
     /**
@@ -46,15 +55,15 @@ public class GameBoard {
 
                 //Prints X for free square
                 if (row == boardSize / 2 && col == boardSize / 2) {
-                    System.out.print("|  X  ");
+                    System.out.print("|  " + GREEN + "X" + RESET + "  ");
                 }
                 else {
                     //Adds one less space for numbers with two digits
                     if (this.board[row][col].getValue() > 9) {
-                        System.out.print("| " + this.board[row][col].getValue() + "  ");
+                        System.out.print("| " + getSquareValueColoured(this.board[row][col]) + "  ");
                     }
                     else {
-                        System.out.print("|  " + this.board[row][col].getValue() + "  ");
+                        System.out.print("|  " + getSquareValueColoured(this.board[row][col]) + "  ");
                     }
                 }
             }
@@ -71,5 +80,19 @@ public class GameBoard {
             System.out.print("------");
         }
         System.out.println("-");
+    }
+
+    /**
+     * Gets the value of the game board square which is coloured green if the square has been covered
+     * @param square
+     * @return String
+     */
+    private String getSquareValueColoured(GameBoardSquare square) {
+        if (square.isCovered()) {
+            return (GREEN + square.getValue() + RESET);
+        }
+        else {
+            return Integer.toString(square.getValue());
+        }
     }
 }
