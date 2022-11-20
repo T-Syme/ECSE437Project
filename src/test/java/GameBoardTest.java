@@ -17,7 +17,7 @@ public class GameBoardTest {
     void testGameBoard() {
         for (int row = 0; row < boardSize; row++) {
             for (int col = 0; col < boardSize; col++) {
-                if (row == 3 && col == 3) {
+                if (row == 2 && col == 2) {
                     assertTrue(board[row][col].isCovered());
                 }
 

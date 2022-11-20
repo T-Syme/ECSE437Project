@@ -14,7 +14,7 @@ public class GameBoard {
             for (int col = 0; col < boardSize; col++) {
                 board[row][col] = new GameBoardSquare();
 
-                if (row == 3 && col == 3) {
+                if (row == 2 && col == 2) {
                     board[row][col].setCovered(true);
                 }
 
