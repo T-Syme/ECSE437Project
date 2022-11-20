@@ -4,7 +4,7 @@ public class GameBoard {
     private static final int BOARD_SIZE = 5;
 
     /**
-     * These string values, GREEN and RESET, were retrieved from the following source:
+     * The string values, GREEN and RESET, were retrieved from the following source:
      * https://www.geeksforgeeks.org/how-to-print-colored-text-in-java-console/
      * Data accessed: November 20th, 2022
      */
