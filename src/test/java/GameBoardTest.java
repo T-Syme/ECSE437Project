@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameBoardTest {
-    private GameBoardSquare board[][];
+    private GameBoardSquare[][] board;
     private static final int BOARD_SIZE = 5;
 
     @BeforeEach

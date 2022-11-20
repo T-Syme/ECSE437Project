@@ -1,5 +1,5 @@
 public class GameBoard {
-    private GameBoardSquare board[][];
+    private final GameBoardSquare[][] board;
 
     private static final int BOARD_SIZE = 5;
 
@@ -41,6 +41,45 @@ public class GameBoard {
 
     public GameBoardSquare[][] getBoard() {
         return board;
+    }
+
+    /**
+     * Checks if there is a win on the board
+     * This could be a row, column or full diagonal of marked GameBoardSquares
+     * @return boolean: true if there is a win, false otherwise
+     */
+    public boolean checkBoard() {
+        // Check rows and columns by AND-ing all values for a row or column
+        // If one is false, then no win for that row/column (similar for diagonals)
+
+        boolean diagonalWin1 = true;
+        boolean diagonalWin2 = true;
+
+        for (int i = 0; i < BOARD_SIZE; i++) {
+            boolean rowWin = true;
+            boolean colWin = true;
+
+            for (int j = 0; j < BOARD_SIZE; j++) {
+                rowWin = rowWin && this.board[i][j].isCovered();
+                colWin = colWin && this.board[j][i].isCovered();
+
+                // Top-left to bottom-right
+                if (i == j) {
+                    diagonalWin1 = diagonalWin1 && this.board[i][j].isCovered();
+                }
+
+                // Bottom-left to top-right
+                if (i + j == BOARD_SIZE - 1) {
+                    diagonalWin2 = diagonalWin2 && this.board[i][j].isCovered();
+                }
+            }
+
+            if (rowWin || colWin) {
+                return true;
+            }
+        }
+
+        return diagonalWin1 || diagonalWin2;
     }
 
     /**
