@@ -16,7 +16,7 @@ public class BingoApp {
             ArrayList<String> names = new ArrayList<>();
             String line;
 
-            do {
+            while (names.size() < 5) {
                 System.out.println("Please enter a player's name and press enter");
                 System.out.println("When all players have been added, press enter");
                 line = reader.nextLine();
@@ -27,7 +27,7 @@ public class BingoApp {
                 } else {
                     names.add(line);
                 }
-            } while (names.size() < 5);
+            }
 
             System.out.println(names);
 
@@ -36,7 +36,7 @@ public class BingoApp {
 
 
             System.out.println("Would you like to play another game? (Y/N)");
-            nextGame = reader.next().charAt(0);
+            nextGame = reader.nextLine().charAt(0);
 
         } while (nextGame == 'Y' || nextGame == 'y');
 
