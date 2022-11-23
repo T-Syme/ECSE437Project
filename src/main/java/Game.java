@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Game {
     private Player winner;
-    private ArrayList players;
+    private ArrayList<Player> players;
 
     public Game() {
-        players = new ArrayList<>();
+        players = new ArrayList<Player>();
     }
 
     public Player getWinner() {
