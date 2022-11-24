@@ -4,12 +4,12 @@ import java.util.Scanner;
 public class Game {
     private static final int BOARD_SIZE = 5;
 
-    private ArrayList<Player> winners;
-    private ArrayList<Player> players;
+    private final ArrayList<Player> winners;
+    private final ArrayList<Player> players;
 
     public Game() {
         winners = new ArrayList<>();
-        players = new ArrayList<Player>();
+        players = new ArrayList<>();
     }
 
     public void addWinner(Player player) {
@@ -20,10 +20,27 @@ public class Game {
         players.add(player);
     }
 
+    public void addPlayer(String name) {
+        players.add(new Player(name));
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return this.players;
+    }
+
     public int getPlayersSize() {
         return players.size();
     }
 
+    public boolean containsPlayer(String newName) {
+        for (Player player : this.players) {
+            if (player.getPlayerName().equals(newName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void playGame() {
         RandomGenerator generator = new RandomGenerator();
         for (Player player : players) {
@@ -84,19 +101,13 @@ public class Game {
     }
 
     private String getBingoColumnLetter(int col) {
-        switch(col) {
-            case 0:
-                return "B";
-            case 1:
-                return "I";
-            case 2:
-                return "N";
-            case 3:
-                return "G";
-            case 4:
-                return "O";
-            default:
-                return "";
-        }
+        return switch (col) {
+            case 0 -> "B";
+            case 1 -> "I";
+            case 2 -> "N";
+            case 3 -> "G";
+            case 4 -> "O";
+            default -> "";
+        };
     }
 }
