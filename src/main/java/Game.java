@@ -20,7 +20,24 @@ public class Game {
         players.add(player);
     }
 
+    public void addPlayer(String name) {
+        players.add(new Player(name));
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return this.players;
+    }
+
     public int getPlayersSize() {
         return players.size();
+    }
+
+    public boolean containsPlayer(String newName) {
+        for (Player player : this.players) {
+            if (player.getPlayerName().equals(newName)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

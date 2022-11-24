@@ -12,27 +12,27 @@ public class BingoApp {
         do {
             System.out.println("Starting a new game...");
 
-            ArrayList<String> names = new ArrayList<>();
             String line;
+            Game game = new Game();
 
-            while (names.size() < 5) {
+            while (game.getPlayersSize() < 5) {
                 System.out.println("Please enter a player's name and press enter");
                 System.out.println("When all players have been added, press enter");
 
                 line = reader.nextLine();
 
-                if (names.contains(line)) {
+                if (game.containsPlayer(line)) {
                     System.out.println("Names cannot be repeated");
-                } else if (line.isEmpty() && names.size() < 2) {
+                } else if (line.isEmpty() && game.getPlayersSize() < 2) {
                     System.out.println("There must be at least 2 players (max. 5)");
                 } else if (line.isEmpty()) {
                     break;
                 } else {
-                    names.add(line);
+                    game.addPlayer(line);
                 }
             }
 
-            System.out.println(names);
+            System.out.println(game.getPlayers());
 
             // Main logic
 
