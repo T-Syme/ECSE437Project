@@ -37,13 +37,13 @@ public class Game {
             System.out.println("\nPlease press enter to generate the next Bingo value");
             scanner.nextLine();
 
-            RandomValue value = null;
+            RandomValue value;
 
             try {
                 value = generator.getNextValue();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
-                System.exit(1);
+                return;
             }
 
             int col = value.getColumn();
@@ -54,7 +54,7 @@ public class Game {
 
                 for (int row = 0; row < BOARD_SIZE; row++) {
                     if (board.getBoard()[row][col].getValue() == value.getNumber()) {
-                        System.out.println(player.getPlayerName() + " has a match!");
+                        System.out.println("\n" + player.getPlayerName() + " has a match!");
                         board.getBoard()[row][col].setCovered(true);
                         break;
                     }
