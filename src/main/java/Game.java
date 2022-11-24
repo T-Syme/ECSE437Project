@@ -31,8 +31,9 @@ public class Game {
             player.getGameBoard().printBoard();
         }
 
+        Scanner scanner = new Scanner(System.in);
+
         while (true) {
-            Scanner scanner = new Scanner(System.in);
 
             System.out.println("\nPlease press enter to generate the next Bingo value");
             scanner.nextLine();
@@ -78,6 +79,8 @@ public class Game {
         for (Player player : winners) {
             System.out.println(player.getPlayerName());
         }
+
+        scanner.close();
     }
 
     private String getBingoColumnLetter(int col) {
