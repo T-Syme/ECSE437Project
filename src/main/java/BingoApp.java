@@ -35,11 +35,15 @@ public class BingoApp {
             System.out.println(game.getPlayers());
 
             // Main logic
-
+            game.playGame();
 
 
             System.out.println("Would you like to play another game? Type \"Y\" to continue, otherwise hit enter");
-            nextGame = reader.nextLine();
+            try {
+                nextGame = reader.nextLine();
+            } catch (Exception e) {
+                break;
+            }
 
         } while (nextGame.length() > 0 && (nextGame.charAt(0) == 'Y' || nextGame.charAt(0) == 'y'));
 
