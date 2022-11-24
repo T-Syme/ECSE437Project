@@ -41,14 +41,12 @@ public class Game {
         return false;
     }
     
-    public void playGame() {
+    public void playGame(Scanner scanner) {
         RandomGenerator generator = new RandomGenerator();
         for (Player player : players) {
             System.out.println("\n" + player.getPlayerName() + "'s board is:");
             player.getGameBoard().printBoard();
         }
-
-        Scanner scanner = new Scanner(System.in);
 
         while (true) {
 
@@ -96,8 +94,6 @@ public class Game {
         for (Player player : winners) {
             System.out.println(player.getPlayerName());
         }
-
-        scanner.close();
     }
 
     private String getBingoColumnLetter(int col) {
