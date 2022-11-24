@@ -32,6 +32,11 @@ public class Game {
         }
 
         while (true) {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("\nPlease press enter to generate the next Bingo value");
+            scanner.nextLine();
+
             RandomValue value = null;
 
             try {
