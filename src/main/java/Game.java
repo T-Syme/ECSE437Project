@@ -73,7 +73,7 @@ public class Game {
             }
         }
 
-        System.out.println("The winners are:");
+        System.out.println("\nThe winners are:");
 
         for (Player player : winners) {
             System.out.println(player.getPlayerName());
