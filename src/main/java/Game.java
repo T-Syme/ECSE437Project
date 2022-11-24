@@ -1,6 +1,12 @@
+import java.util.ArrayList;
+
 public class Game {
     private Player winner;
-    private int numOfPlayers;
+    private ArrayList<Player> players;
+
+    public Game() {
+        players = new ArrayList<Player>();
+    }
 
     public Player getWinner() {
         return winner;
@@ -10,11 +16,11 @@ public class Game {
         this.winner = winner;
     }
 
-    public int getNumOfPlayers() {
-        return numOfPlayers;
+    public void addPlayer(Player player) {
+        players.add(player);
     }
 
-    public void setNumOfPlayers(int numOfPlayers) {
-        this.numOfPlayers = numOfPlayers;
+    public int getPlayersSize() {
+        return players.size();
     }
 }
