@@ -1,4 +1,4 @@
-import Exceptions.RandomGeneratorException;
+import exceptions.RandomGeneratorException;
 
 import java.util.ArrayList;
 import java.util.List;

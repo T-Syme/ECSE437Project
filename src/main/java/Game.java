@@ -1,4 +1,4 @@
-import Exceptions.RandomGeneratorException;
+import exceptions.RandomGeneratorException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +43,7 @@ public class Game {
     public void playGame(Scanner scanner) {
         RandomGenerator generator = new RandomGenerator();
         for (Player player : players) {
+            player.getGameBoard().setUpGameBoard();
             System.out.println("\n" + player.getPlayerName() + "'s board is:");
             player.getGameBoard().printBoard();
         }
