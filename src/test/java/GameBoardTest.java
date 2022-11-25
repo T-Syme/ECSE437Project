@@ -1,22 +1,34 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class GameBoardTest {
     private GameBoard gameBoard;
     private GameBoardSquare[][] board;
     private static final int BOARD_SIZE = 5;
 
+    @Mock
+    RandomGenerator generator;
+
     @BeforeEach
     void setup() {
         this.gameBoard = new GameBoard();
-        this.board = this.gameBoard.getBoard();
     }
 
     @Test
-    void testGameBoard() {
+    void testSetUpGameBoard() throws Exception {
+        when(generator.getNextNumber()).thenReturn(1);
+        this.gameBoard.setGenerator(generator);
+        this.gameBoard.setUpGameBoard();
+        this.board = this.gameBoard.getBoard();
+
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 if (row == BOARD_SIZE / 2 && col == BOARD_SIZE / 2) {
@@ -34,7 +46,12 @@ public class GameBoardTest {
      * Verify that it finds a win in a row
      */
     @Test
-    void testCheckBoardRow() {
+    void testCheckBoardRow() throws Exception {
+        when(generator.getNextNumber()).thenReturn(1);
+        this.gameBoard.setGenerator(generator);
+        this.gameBoard.setUpGameBoard();
+        this.board = this.gameBoard.getBoard();
+
         for (int col = 0; col < BOARD_SIZE; col++) {
             this.board[0][col].setCovered(true);
         }
@@ -46,7 +63,12 @@ public class GameBoardTest {
      * Verify that it finds a win in a column
      */
     @Test
-    void testCheckBoardCol() {
+    void testCheckBoardCol() throws Exception {
+        when(generator.getNextNumber()).thenReturn(1);
+        this.gameBoard.setGenerator(generator);
+        this.gameBoard.setUpGameBoard();
+        this.board = this.gameBoard.getBoard();
+
         for (int row = 0; row < BOARD_SIZE; row++) {
             this.board[row][0].setCovered(true);
         }
@@ -58,7 +80,12 @@ public class GameBoardTest {
      * Verify that it finds a win in a diagonal (1)
      */
     @Test
-    void testCheckBoardDiagonal1() {
+    void testCheckBoardDiagonal1() throws Exception {
+        when(generator.getNextNumber()).thenReturn(1);
+        this.gameBoard.setGenerator(generator);
+        this.gameBoard.setUpGameBoard();
+        this.board = this.gameBoard.getBoard();
+
         for (int i = 0; i < BOARD_SIZE; i++) {
             this.board[i][i].setCovered(true);
         }
@@ -70,7 +97,11 @@ public class GameBoardTest {
      * Verify that it finds a win in a diagonal (2)
      */
     @Test
-    void testCheckBoardDiagonal2() {
+    void testCheckBoardDiagonal2() throws Exception {
+        when(generator.getNextNumber()).thenReturn(1);
+        this.gameBoard.setGenerator(generator);
+        this.gameBoard.setUpGameBoard();
+        this.board = this.gameBoard.getBoard();
         for (int i = 0; i < BOARD_SIZE; i++) {
             this.board[i][BOARD_SIZE - 1 - i].setCovered(true);
         }
@@ -82,7 +113,11 @@ public class GameBoardTest {
      * Verify that it does not find a win
      */
     @Test
-    void testCheckBoardNoWin() {
+    void testCheckBoardNoWin() throws Exception {
+        when(generator.getNextNumber()).thenReturn(1);
+        this.gameBoard.setGenerator(generator);
+        this.gameBoard.setUpGameBoard();
+        this.board = this.gameBoard.getBoard();
         assertFalse(this.gameBoard.checkBoard());
     }
 }

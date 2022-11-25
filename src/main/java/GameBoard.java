@@ -1,5 +1,7 @@
 public class GameBoard {
-    private final GameBoardSquare[][] board;
+    private GameBoardSquare[][] board;
+
+    private RandomGenerator generator;
 
     private static final int BOARD_SIZE = 5;
 
@@ -11,13 +13,25 @@ public class GameBoard {
     private static final String GREEN = "\u001B[32m";
     private static final String RESET = "\u001B[0m";
 
+
+    public GameBoardSquare[][] getBoard() {
+        return board;
+    }
+
+    public void setGenerator(RandomGenerator generator) {
+        this.generator = generator;
+    }
+
     /**
      * Generates a 5x5 bingo game board.
      * Each square in the board corresponds to a number from 1 to 75, except the middle square which is a free slot.
      */
-    public GameBoard() {
+    public void setUpGameBoard() {
         board = new GameBoardSquare[BOARD_SIZE][BOARD_SIZE];
-        RandomGenerator iterator = new RandomGenerator();
+
+        if (generator == null) {
+            generator = new RandomGenerator();
+        }
 
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
@@ -29,7 +43,7 @@ public class GameBoard {
 
                 else {
                     try {
-                        board[row][col].setValue(iterator.getNextNumber());
+                        board[row][col].setValue(generator.getNextNumber());
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
@@ -37,10 +51,6 @@ public class GameBoard {
                 }
             }
         }
-    }
-
-    public GameBoardSquare[][] getBoard() {
-        return board;
     }
 
     /**
