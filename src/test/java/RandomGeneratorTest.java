@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RandomGeneratorTest {
+class RandomGeneratorTest {
 
     private static final int MIN_VAL = 1;
     private static final int MAX_VAL = 75;

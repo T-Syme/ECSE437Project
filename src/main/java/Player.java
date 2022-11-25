@@ -7,10 +7,6 @@ public class Player {
         return gameBoard;
     }
 
-    public void setGameBoard(GameBoard gameBoard) {
-        this.gameBoard = gameBoard;
-    }
-
     public Player(String playerName) {
         this.playerName = playerName;
         this.numOfWins = 0;
@@ -19,17 +15,5 @@ public class Player {
 
     public String getPlayerName() {
         return playerName;
-    }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
-    }
-
-    public int getNumOfWins() {
-        return numOfWins;
-    }
-
-    public void setNumOfWins(int numOfWins) {
-        this.numOfWins = numOfWins;
     }
 }
