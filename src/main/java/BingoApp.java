@@ -35,8 +35,7 @@ public class BingoApp {
             System.out.println(game.getPlayers());
 
             // Main logic
-            game.playGame();
-
+            game.playGame(reader);
 
             System.out.println("Would you like to play another game? Type \"Y\" to continue, otherwise hit enter");
             try {
