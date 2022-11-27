@@ -15,6 +15,10 @@ public class Game {
         players = new ArrayList<>();
     }
 
+    public ArrayList<Player> getWinners() {
+        return winners;
+    }
+
     public void addWinner(Player player) {
         winners.add(player);
     }
@@ -96,7 +100,7 @@ public class Game {
         }
     }
 
-    private String getBingoColumnLetter(int col) {
+    public String getBingoColumnLetter(int col) {
         return switch (col) {
             case 0 -> "B";
             case 1 -> "I";

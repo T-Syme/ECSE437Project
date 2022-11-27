@@ -1,6 +1,6 @@
 public class Player {
-    private String playerName;
-    private GameBoard gameBoard;
+    private final String playerName;
+    private final GameBoard gameBoard;
 
     public GameBoard getGameBoard() {
         return gameBoard;
