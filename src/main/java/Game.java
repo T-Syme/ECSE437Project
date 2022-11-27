@@ -52,7 +52,7 @@ public class Game {
             player.getGameBoard().printBoard();
         }
 
-        while (!this.winners.isEmpty()) {
+        while (this.winners.isEmpty()) {
 
             System.out.println("\nPlease press enter to generate the next Bingo value");
             scanner.nextLine();

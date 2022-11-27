@@ -31,8 +31,6 @@ public class BingoApp {
                 }
             }
 
-            System.out.println(game.getPlayers());
-
             // Main logic
             game.playGame(reader);
 
