@@ -1,4 +1,7 @@
+import exceptions.RandomGeneratorException;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -16,15 +19,11 @@ public class Game {
         winners.add(player);
     }
 
-    public void addPlayer(Player player) {
-        players.add(player);
-    }
-
     public void addPlayer(String name) {
         players.add(new Player(name));
     }
 
-    public ArrayList<Player> getPlayers() {
+    public List<Player> getPlayers() {
         return this.players;
     }
 
@@ -49,7 +48,7 @@ public class Game {
             player.getGameBoard().printBoard();
         }
 
-        while (true) {
+        while (!this.winners.isEmpty()) {
 
             System.out.println("\nPlease press enter to generate the next Bingo value");
             scanner.nextLine();
@@ -58,7 +57,7 @@ public class Game {
 
             try {
                 value = generator.getNextValue();
-            } catch (Exception e) {
+            } catch (RandomGeneratorException e) {
                 System.out.println(e.getMessage());
                 return;
             }
@@ -77,16 +76,10 @@ public class Game {
                     }
                 }
 
-                if (board.checkBoard()) {
-                    addWinner(player);
-                }
+                checkWin(board, player);
 
                 System.out.println("\n" + player.getPlayerName() + "'s board");
                 board.printBoard();
-            }
-
-            if (this.winners.size() != 0) {
-                break;
             }
         }
 
@@ -94,6 +87,12 @@ public class Game {
 
         for (Player player : winners) {
             System.out.println(player.getPlayerName());
+        }
+    }
+
+    private void checkWin(GameBoard board, Player player) {
+        if (board.checkBoard()) {
+            addWinner(player);
         }
     }
 

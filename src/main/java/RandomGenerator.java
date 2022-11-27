@@ -1,3 +1,5 @@
+import exceptions.RandomGeneratorException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -47,24 +49,24 @@ public class RandomGenerator {
      * @return int
      * @throws Exception if there are no more values
      */
-    public int getNextNumber() throws Exception {
+    public int getNextNumber() throws RandomGeneratorException {
         if (iterator.hasNext()) {
             return iterator.next();
         } else {
-            throw new Exception("No more numbers");
+            throw new RandomGeneratorException("No more numbers");
         }
     }
 
     /**
      * Get the next number from the moves list
      * @return int
-     * @throws Exception if there are no more values
+     * @throws RandomGeneratorException if there are no more values
      */
-    public RandomValue getNextValue() throws Exception {
+    public RandomValue getNextValue() throws RandomGeneratorException {
         if (valuesIterator.hasNext()) {
             return valuesIterator.next();
         } else {
-            throw new Exception("No more values");
+            throw new RandomGeneratorException("No more values");
         }
     }
 
