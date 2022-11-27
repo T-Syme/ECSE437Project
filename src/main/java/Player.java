@@ -6,7 +6,6 @@ public class Player {
         return gameBoard;
     }
 
-
     public Player(String playerName) {
         this.playerName = playerName;
         this.gameBoard = new GameBoard();
@@ -15,5 +14,4 @@ public class Player {
     public String getPlayerName() {
         return playerName;
     }
-
 }

@@ -1,3 +1,4 @@
+import exceptions.RandomGeneratorException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class GameBoardTest {
+class GameBoardTest {
     private GameBoard gameBoard;
     private GameBoardSquare[][] board;
     private static final int BOARD_SIZE = 5;
@@ -27,7 +28,7 @@ public class GameBoardTest {
     }
 
     @Test
-    void testSetUpGameBoard() throws Exception {
+    void testSetUpGameBoard() throws RandomGeneratorException {
         when(generator.getNextNumber()).thenReturn(1);
         this.gameBoard.setGenerator(generator);
         this.gameBoard.setUpGameBoard();
@@ -50,7 +51,7 @@ public class GameBoardTest {
      * Verify that it finds a win in a row
      */
     @Test
-    void testCheckBoardRow() throws Exception {
+    void testCheckBoardRow() throws RandomGeneratorException {
         when(generator.getNextNumber()).thenReturn(1);
         this.gameBoard.setGenerator(generator);
         this.gameBoard.setUpGameBoard();
@@ -67,7 +68,7 @@ public class GameBoardTest {
      * Verify that it finds a win in a column
      */
     @Test
-    void testCheckBoardCol() throws Exception {
+    void testCheckBoardCol() throws RandomGeneratorException {
         when(generator.getNextNumber()).thenReturn(1);
         this.gameBoard.setGenerator(generator);
         this.gameBoard.setUpGameBoard();
@@ -84,7 +85,7 @@ public class GameBoardTest {
      * Verify that it finds a win in a diagonal (1)
      */
     @Test
-    void testCheckBoardDiagonal1() throws Exception {
+    void testCheckBoardDiagonal1() throws RandomGeneratorException {
         when(generator.getNextNumber()).thenReturn(1);
         this.gameBoard.setGenerator(generator);
         this.gameBoard.setUpGameBoard();
@@ -101,7 +102,7 @@ public class GameBoardTest {
      * Verify that it finds a win in a diagonal (2)
      */
     @Test
-    void testCheckBoardDiagonal2() throws Exception {
+    void testCheckBoardDiagonal2() throws RandomGeneratorException {
         when(generator.getNextNumber()).thenReturn(1);
         this.gameBoard.setGenerator(generator);
         this.gameBoard.setUpGameBoard();
@@ -117,7 +118,7 @@ public class GameBoardTest {
      * Verify that it does not find a win
      */
     @Test
-    void testCheckBoardNoWin() throws Exception {
+    void testCheckBoardNoWin() throws RandomGeneratorException {
         when(generator.getNextNumber()).thenReturn(1);
         this.gameBoard.setGenerator(generator);
         this.gameBoard.setUpGameBoard();
