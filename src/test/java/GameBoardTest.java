@@ -4,8 +4,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -13,6 +12,9 @@ public class GameBoardTest {
     private GameBoard gameBoard;
     private GameBoardSquare[][] board;
     private static final int BOARD_SIZE = 5;
+    private final GameBoardSquare gameBoardSquare = new GameBoardSquare();
+    private static final String GREEN = "\u001B[32m";
+    private static final String RESET = "\u001B[0m";
 
     @Mock
     RandomGenerator generator;
@@ -20,6 +22,8 @@ public class GameBoardTest {
     @BeforeEach
     void setup() {
         this.gameBoard = new GameBoard();
+        this.gameBoardSquare.setCovered(true);
+        this.gameBoardSquare.setValue(2);
     }
 
     @Test
@@ -119,5 +123,28 @@ public class GameBoardTest {
         this.gameBoard.setUpGameBoard();
         this.board = this.gameBoard.getBoard();
         assertFalse(this.gameBoard.checkBoard());
+    }
+
+    /**
+     * Method: getSquareValueColoured(GameBoardSquare)
+     * Verify that square is covered
+     */
+    @Test
+    void testGetSquareValueColoured() {
+        String expected = GREEN + gameBoardSquare.getValue() + RESET;
+        String actual = gameBoard.getSquareValueColoured(gameBoardSquare);
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Method: getSquareValueColoured(GameBoardSquare)
+     * Verify that square is not covered
+     */
+    @Test
+    void testGetSquareValueNotColoured() {
+        gameBoardSquare.setCovered(false);
+        String expected = Integer.toString(gameBoardSquare.getValue());
+        String actual = gameBoard.getSquareValueColoured(gameBoardSquare);
+        assertEquals(expected, actual);
     }
 }
