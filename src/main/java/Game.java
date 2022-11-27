@@ -100,7 +100,7 @@ public class Game {
         }
     }
 
-    private String getBingoColumnLetter(int col) {
+    public String getBingoColumnLetter(int col) {
         return switch (col) {
             case 0 -> "B";
             case 1 -> "I";
