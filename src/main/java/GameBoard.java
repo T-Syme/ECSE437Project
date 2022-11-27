@@ -39,9 +39,7 @@ public class GameBoard {
 
                 if (row == BOARD_SIZE / 2 && col == BOARD_SIZE / 2) {
                     board[row][col].setCovered(true);
-                }
-
-                else {
+                } else {
                     try {
                         board[row][col].setValue(generator.getNextNumber());
                     } catch (Exception e) {
@@ -105,13 +103,11 @@ public class GameBoard {
                 //Prints X for free square
                 if (row == BOARD_SIZE / 2 && col == BOARD_SIZE / 2) {
                     System.out.print("|  " + GREEN + "X" + RESET + "  ");
-                }
-                else {
+                } else {
                     //Adds one less space for numbers with two digits
                     if (this.board[row][col].getValue() > 9) {
                         System.out.print("| " + getSquareValueColoured(this.board[row][col]) + "  ");
-                    }
-                    else {
+                    } else {
                         System.out.print("|  " + getSquareValueColoured(this.board[row][col]) + "  ");
                     }
                 }
@@ -133,14 +129,13 @@ public class GameBoard {
 
     /**
      * Gets the value of the game board square which is coloured green if the square has been covered
-     * @param square
+     * @param square GameBoardSquare
      * @return String
      */
-    private String getSquareValueColoured(GameBoardSquare square) {
+    public String getSquareValueColoured(GameBoardSquare square) {
         if (square.isCovered()) {
             return (GREEN + square.getValue() + RESET);
-        }
-        else {
+        } else {
             return Integer.toString(square.getValue());
         }
     }

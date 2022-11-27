@@ -12,12 +12,12 @@ public class Game {
         players = new ArrayList<>();
     }
 
-    public void addWinner(Player player) {
-        winners.add(player);
+    public ArrayList<Player> getWinners() {
+        return winners;
     }
 
-    public void addPlayer(Player player) {
-        players.add(player);
+    public void addWinner(Player player) {
+        winners.add(player);
     }
 
     public void addPlayer(String name) {
@@ -97,7 +97,7 @@ public class Game {
         }
     }
 
-    private String getBingoColumnLetter(int col) {
+    public String getBingoColumnLetter(int col) {
         return switch (col) {
             case 0 -> "B";
             case 1 -> "I";
